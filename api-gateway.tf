@@ -3,7 +3,7 @@ module "api_gateway" {
   source  = "terraform-aws-modules/apigateway-v2/aws"
   version = "~> 0.0"
 
-  name          = "${local.application-name}-${local.environment}"
+  name          = "${local.application-name}-${local.environment}-api"
   description   = "HTTP API Gateway with VPC links"
   protocol_type = "HTTP"
 
@@ -53,7 +53,7 @@ resource "aws_apigatewayv2_authorizer" "this" {
 
   api_id          = module.api_gateway.this_apigatewayv2_api_id
   authorizer_type = "REQUEST"
-  authorizer_uri  = module.lambda.lambda_function_invoke_arn
+  authorizer_uri  = module.lambda-authorizer.lambda_function_invoke_arn
 }
 
 module "api_gateway_security_group" {

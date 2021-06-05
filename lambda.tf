@@ -1,5 +1,5 @@
 
-module "lambda" {
+module "lambda-authorizer" {
   source  = "terraform-aws-modules/lambda/aws"
   version = "~> 2.0"
 
